@@ -3,6 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
+var compression = require('compression')
 // const helpers = require('./utils/helpers');
 
 const sequelize = require('./config/connection');
@@ -25,6 +26,8 @@ const sess = {
     db: sequelize
   })
 };
+
+app.use(compression())
 
 // Add express-session and store as Express.js middleware
 app.use(session(sess));
